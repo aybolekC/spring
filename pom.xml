@@ -11,6 +11,7 @@
     <modules>
         <module>Spring-00-Coupling</module>
         <module>Spring-01-Core-IoC</module>
+        <module>Spring-02-Core-Wiring</module>
     </modules>
 
     <properties>
