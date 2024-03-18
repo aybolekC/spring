@@ -1,7 +1,9 @@
 package com.aya.repository;
 
 import com.aya.model.Comment;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DBCommentRepository implements CommentRepository{
     @Override
     public void storeComment(Comment comment) {
