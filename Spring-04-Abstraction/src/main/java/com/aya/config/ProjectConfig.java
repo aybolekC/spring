@@ -1,4 +1,4 @@
-package com.aya.model.config;
+package com.aya.config;
 
 
 import org.springframework.context.annotation.ComponentScan;
