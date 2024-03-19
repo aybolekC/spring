@@ -4,6 +4,7 @@ import com.aya.model.Comment;
 import com.aya.proxy.CommentNotificationProxy;
 import com.aya.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,12 @@ import org.springframework.stereotype.Component;
 //@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Lazy
 public class CommentService {
+
+//    @Value("${name}")
+//    private String x;
+//
+//    @Value("${days}")
+//    private String[] days;
 
     private final CommentRepository commentRepository;
     private final CommentNotificationProxy commentNotificationProxy;
