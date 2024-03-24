@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Welcome new student!</h2>
+
+<h2 th:text="${students}"></h2>
+
+<h2 th:text="${students.get(0).firstName}"></h2>
+<h2 th:text="${students.get(0).lastName}"></h2>
+<h2 th:text="${students.get(0).age}"></h2>
+<h2 th:text="${students.get(0).state}"></h2>
+
+<!--Concatenation-->
+<h2 th:text="${'Welcome ' + students.get(0).firstName} + '!'"></h2>
+
+
+<!--Link-->
+<a th:href="@{https://google.com}">Google</a>
+
+<br>
+
+<a th:href="@{/student/welcome}">Welcome Page</a>
+
+<br>
+
+<!--adding query parameter-->
+<a th:href="@{/student/welcome(id=3)}">Link with query parameters</a>
+<br>
+<a th:href="@{/student/welcome(id=${students.get(0).firstName})}">Link with query parameters where parameter coming from controller</a>
+<br>
+
+<!--Iteration-->
+
+<ul>
+    <li th:each="student: ${students}" th:text="${student.firstName}"></li>
+
+</ul>
+
+
+
+</body>
+</html>
