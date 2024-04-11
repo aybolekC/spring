@@ -1,26 +1,30 @@
 package com.aya.bootstrap;
 
 import com.aya.enums.Status;
-import com.aya.model.Merchant;
-import com.aya.model.Payment;
-import com.aya.model.PaymentDetail;
-import com.aya.repository.MerchantRepository;
-import com.aya.repository.PaymentRepository;
+import com.aya.model.*;
+import com.aya.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 
 @Component
 public class DataGenerator implements CommandLineRunner {
     PaymentRepository paymentRepository;
     MerchantRepository merchantRepository;
+    CustomerRepository customerRepository;
+    CartRepository cartRepository;
+    ItemRepository itemRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository) {
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository, CartRepository cartRepository, ItemRepository itemRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
+        this.customerRepository = customerRepository;
+        this.cartRepository = cartRepository;
+        this.itemRepository = itemRepository;
     }
 
     @Override
@@ -37,6 +41,34 @@ public class DataGenerator implements CommandLineRunner {
         payment2.setPaymentDetail(paymentDetail2);
 
         Merchant merchant1 = new Merchant("AmazonSubMerchant","M123",new BigDecimal("0.25"),new BigDecimal("3.25"),5);
+
+        Customer customer1 = new Customer("msmith","mike","smith","mike@cydeo.com","VA");
+        payment1.setCustomer(customer1);
+        payment2.setCustomer(customer1);
+
+        Item item1=new Item("Milk","M01");
+        Item item2=new Item("Sugar","S01");
+        Item item3=new Item("Bread","B01");
+
+
+        Cart cart1=new Cart();
+        Cart cart2=new Cart();
+
+        cart1.setItemList(Arrays.asList(item1,item2,item3));
+        cart2.setItemList(Arrays.asList(item1,item2));
+
+
+        itemRepository.save(item1);
+        itemRepository.save(item2);
+        itemRepository.save(item3);
+
+        cartRepository.save(cart1);
+        cartRepository.save(cart2);
+
+
+
+
+        customerRepository.save(customer1);
 
         merchantRepository.save(merchant1);
 
