@@ -3,6 +3,7 @@ package com.aya.repository;
 import com.aya.entity.Course;
 import com.aya.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -32,11 +33,15 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByNameStartingWith(String pattern);
 
     //find all courses by category and returns a stream
+//    @Modifying
+//    @Transactional
     Stream<Course> streamByCategory(String category);
 
 
     @Query("SELECT c FROM Course c WHERE c.category=:category and c.rating>:rating")
     List<Employee> findAllByCategoryAndRating(@Param("category") String category, @Param("rating") int rating);
+
+
 
 
 

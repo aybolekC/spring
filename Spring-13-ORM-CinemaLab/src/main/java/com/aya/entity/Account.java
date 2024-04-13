@@ -2,11 +2,14 @@ package com.aya.entity;
 import com.aya.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Table(name = "account_details")
 public class Account extends BaseEntity{
 
@@ -22,6 +25,20 @@ public class Account extends BaseEntity{
     private UserRole role=UserRole.USER;
 
     @OneToOne(mappedBy = "account")
-    private UserAccount user;
+    private User user;
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", age=" + age +
+                ", postalCode='" + postalCode + '\'' +
+                ", role=" + role +
+                ", user=" + user +
+                '}';
+    }
 }

@@ -9,9 +9,11 @@ import jakarta.persistence.Column;
 import org.hibernate.cache.spi.RegionFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class DataGenerator implements CommandLineRunner {
@@ -31,6 +33,7 @@ public class DataGenerator implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
 
         System.out.println("===============================REGION START============================");
@@ -91,8 +94,8 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("countByCategory:  " + courseRepository.countByCategory("Spring"));
         System.out.println("findByNameStartingWith:  " + courseRepository.findByNameStartingWith("Rapid"));
 
-//        courseRepository.streamByCategory("Java").forEach(System.out::println);
-        System.out.println("streamByCategory:  " + courseRepository.streamByCategory("Java"));
+        courseRepository.streamByCategory("Java").forEach(System.out::println);
+        System.out.println("streamByCategory:  " + courseRepository.streamByCategory("Java").collect(Collectors.toList()));
 
         System.out.println("===============================COURSE END============================");
 

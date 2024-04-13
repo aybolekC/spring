@@ -3,8 +3,10 @@ package com.aya.repository;
 import com.aya.entity.Department;
 import com.aya.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -111,6 +113,23 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
   @Query("SELECT e FROM Employee e WHERE e.salary=:salary")
   List<Employee> getEmployeeSalary(@Param("salary") int salary);
+
+
+
+  @Modifying
+  @Transactional
+  @Query("UPDATE Employee e set e.email='admin@gmail.com' where e.id=:id")
+  void updateEmployeeJPQL(@Param("id") Long id);
+
+  @Modifying
+  @Transactional
+  @Query(value = "UPDATE employees set email='admin@gmail.com' where id=:id", nativeQuery = true)
+  void updateEmployeeNativeQuery(@Param("id") Long id);
+
+
+
+
+
 
 
 
