@@ -1,6 +1,7 @@
 package com.aya.bootstrap;
 
 import com.aya.entity.Employee;
+import com.aya.repository.CourseRepository;
 import com.aya.repository.DepartmentRepository;
 import com.aya.repository.EmployeeRepository;
 import com.aya.repository.RegionRepository;
@@ -19,12 +20,14 @@ public class DataGenerator implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final DepartmentRepository departmentRepository;
     private final EmployeeRepository employeeRepository;
+    private final CourseRepository courseRepository;
 
 
-    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
+    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository, CourseRepository courseRepository) {
         this.regionRepository = regionRepository;
         this.departmentRepository = departmentRepository;
         this.employeeRepository = employeeRepository;
+        this.courseRepository = courseRepository;
     }
 
     @Override
@@ -75,6 +78,23 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("getEmployeeSalary:  " + employeeRepository.getEmployeeSalary());
 
         System.out.println("===============================EMPLOYEE JPQL END============================");
+
+        System.out.println("===============================COURSE START============================");
+        System.out.println("findByCategory:  " + courseRepository.findByCategory("Java"));
+
+        courseRepository.findByCategory("Java").forEach(System.out::println);
+
+      //  System.out.println("findByCategoryAndOrderByName:  " + courseRepository.findByCategoryAndOrderByName("Java"));
+        System.out.println("findByCategoryOrderByName:  " + courseRepository.findByCategoryOrderByName("Java"));
+        System.out.println("existsByName:  " + courseRepository.existsByName("JavaScript"));
+        System.out.println("countByCategory:  " + courseRepository.countByCategory("Java"));
+        System.out.println("countByCategory:  " + courseRepository.countByCategory("Spring"));
+        System.out.println("findByNameStartingWith:  " + courseRepository.findByNameStartingWith("Rapid"));
+
+//        courseRepository.streamByCategory("Java").forEach(System.out::println);
+        System.out.println("streamByCategory:  " + courseRepository.streamByCategory("Java"));
+
+        System.out.println("===============================COURSE END============================");
 
     }
 }
