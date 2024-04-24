@@ -38,7 +38,8 @@ public interface MovieCinemaRepository extends JpaRepository<MovieCinema, Long> 
 
 
     //write a derived query to find the top 3 expensive movies
-    List<MovieCinema> findFirst3ByMoviePriceDesc();
+   // List<MovieCinema> findFirst3ByPrice();
+    //List<Post> findAllByOrderByCreatedDateDesc();
 
 
     //write a derived query to list all movie cinemas that contain a specific movie name

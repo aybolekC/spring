@@ -25,7 +25,7 @@ import javax.annotation.processing.Generated;
     "company"
 })
 @Generated("jsonschema2pojo")
-public class User {
+public class UserDTO {
 
     @JsonProperty("id")
     private Integer id;
