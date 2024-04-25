@@ -1,22 +1,24 @@
 package com.aya.entity;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
 @NoArgsConstructor
-public class MovieCinema extends BaseEntity {
+@Setter
+@Getter
+public class MovieCinema extends BaseEntity{
 
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
@@ -24,4 +26,10 @@ public class MovieCinema extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cinema cinema;
 
+    @Override
+    public String toString() {
+        return "MovieCinema{" +
+                "dateTime=" + dateTime +
+                '}';
+    }
 }

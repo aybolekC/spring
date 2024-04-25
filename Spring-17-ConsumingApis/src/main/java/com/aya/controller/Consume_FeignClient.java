@@ -4,10 +4,10 @@ package com.aya.controller;
 import com.aya.client.EmployeeClient;
 import com.aya.client.UserClient;
 import com.aya.dto.ResponseWrapper;
-import org.apache.catalina.filters.AddDefaultCharsetFilter;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @RestController
 public class Consume_FeignClient {
@@ -29,11 +29,12 @@ public class Consume_FeignClient {
     }
 
 
-    @GetMapping("/api/v1/empoyee")
-    public ResponseEntity<ResponseWrapper> getEmployees(){
-        return ResponseEntity.ok(new ResponseWrapper("test2", employeeClient.getEmployee("6298ebfecd0551211fce37a6")));
+
+    @GetMapping("/api/v1/employee")
+    public ResponseEntity<ResponseWrapper> getEmployee(){
+        return ResponseEntity.ok(new ResponseWrapper("Successfully retrieved ",employeeClient.getEmployee("6298ebfecd0551211fce37a6")));
     }
 
-
+//    app-id = 6298ebfecd0551211fce37a6
 
 }
