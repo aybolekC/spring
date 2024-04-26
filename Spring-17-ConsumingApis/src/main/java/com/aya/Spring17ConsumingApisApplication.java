@@ -17,6 +17,7 @@ public class Spring17ConsumingApisApplication {
 
     @Bean
     public RestTemplate restTemplate(){
+
         return new RestTemplate();
     }
 
