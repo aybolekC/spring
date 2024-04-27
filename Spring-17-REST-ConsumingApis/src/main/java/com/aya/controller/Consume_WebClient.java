@@ -1,6 +1,5 @@
 package com.aya.controller;
 
-import com.aya.dto.ResponseWrapper;
 import com.aya.entity.Cinema;
 import com.aya.entity.Genre;
 import com.aya.entity.MovieCinema;
