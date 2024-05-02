@@ -1,10 +1,7 @@
 package com.aya.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

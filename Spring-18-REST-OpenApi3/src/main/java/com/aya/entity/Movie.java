@@ -2,7 +2,7 @@ package com.aya.entity;
 
 import com.aya.enums.MovieState;
 import com.aya.enums.MovieType;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

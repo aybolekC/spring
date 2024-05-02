@@ -1,6 +1,6 @@
 package com.aya.entity;
 
-import jakarta.persistence.Entity;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
