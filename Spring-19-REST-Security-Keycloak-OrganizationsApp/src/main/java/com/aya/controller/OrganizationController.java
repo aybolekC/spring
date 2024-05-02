@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 
+
 @RestController
 @RequestMapping(value = "/v1/organization")
 public class OrganizationController {

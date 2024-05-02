@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
-    @Override
+@Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http.authorizeRequests()
@@ -28,7 +28,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .permitAll();
         http.csrf().disable();
 }
-    @Autowired
+@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         KeycloakAuthenticationProvider keycloakAuthenticationProvider =
                 keycloakAuthenticationProvider();
@@ -44,7 +44,6 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 new SessionRegistryImpl());
 }
 @Bean
-public KeycloakConfigResolver KeycloakConfigResolver() {
-
-    return new KeycloakSpringBootConfigResolver();
+    public KeycloakConfigResolver KeycloakConfigResolver() {
+        return new KeycloakSpringBootConfigResolver();
 } }
